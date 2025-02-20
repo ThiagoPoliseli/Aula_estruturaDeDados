@@ -1,1 +1,1 @@
-Aula de C, com pilha, inserctionsort, recursão. Dia 17/02/2025
+Conteudo de ESTRUTURAS, PESQUISA E ORDENAÇÃO DE DADOS, faculdade 5 semestre
