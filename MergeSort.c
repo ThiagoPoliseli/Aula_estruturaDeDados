@@ -1,7 +1,10 @@
 
+
+
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
+
 void imprimir(int A[], int n, int tempo);
 void delay(int number_of_seconds);
 int* criarArranjo(int n);
@@ -15,15 +18,14 @@ int main(){
     int n = 10;
     clock_t tempo;
     int* A = criarArranjo(n);
-    printf("Lista Inicial ############################\n");
+    printf("-------------- Lista Inicial --------------\n");
     imprimir(A,n,0);
     tempo = clock;
-	select_min(A,n);
-	//merge_sort(A,n);
+	merge_sort(A,n);
 	tempo = clock() - tempo;
-	printf("Lista Final ##############################\n");
+	printf("\n\n-------------- Lista Final --------------\n");
     imprimir(A,n,0);
-    printf("\nTempo de execução: %lf",((double)tempo) / ((CLOCKS_PER_SEC)/1000));
+    printf("\nTempo de execucao: %lf",((double)tempo) / ((CLOCKS_PER_SEC)/1000));
     return 0;
 }
 void merge_sort(int A[], int n){
@@ -37,14 +39,15 @@ void merge_recursao(int A[], int p, int r){
 		merge(A,p,q,r);
 	}
 }
+
 void merge(int A[], int p, int q, int r){
 	int n1 = q - p + 1;
 	int n2 = r - q;
 	int L[n1];
 	int R[n2];
 	int i,j,k;
-	for (i = 0; i < n1; i++) L[p+i];
-	for (i = 0; i < n2; i++) L[q+i+1];
+	for (i = 0; i < n1; i++) L[i] = A[p+i];
+	for (i = 0; i < n2; i++) R[i] = A[q+i+1];
 	for (i=0,j=0,k=p; k <= r; k++){
 		if ((i < n1) && (j >= n2 || L[i] <= R[j]) ){
 			A[k] = L[i];
@@ -55,6 +58,7 @@ void merge(int A[], int p, int q, int r){
 		}
 	}
 }
+
 void troca(int *x, int *y){
     int aux = *x;
     *x = *y;
